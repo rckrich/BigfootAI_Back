@@ -40,7 +40,19 @@ class ApiController extends Controller
     }
 
     /**
-     * Get Activities by user
+     * Logout user
+     *
+     * @return \Illuminate\Http\Client\Response
+     */
+    public function logout(Request $request)
+    {
+        auth()->user()->currentAccessToken()->delete();
+
+        return response()->json(array(), 204);
+    }
+
+    /**
+     * Get Threads by user
      *
      * @return \Illuminate\Http\Client\Response
      */
@@ -63,7 +75,7 @@ class ApiController extends Controller
     }
 
     /**
-     * Crear thread
+     * Create thread
      *
      * @return \Illuminate\Http\Client\Response
      */
@@ -86,7 +98,7 @@ class ApiController extends Controller
     }
 
     /**
-     * Actualizar thread
+     * Update thread
      *
      * @return \Illuminate\Http\Client\Response
      */
@@ -105,7 +117,7 @@ class ApiController extends Controller
     }
 
     /**
-     * Eliminar thread
+     * Delete thread
      *
      * @return \Illuminate\Http\Client\Response
      */
