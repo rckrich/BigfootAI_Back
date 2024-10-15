@@ -62,6 +62,7 @@ class ApiController extends Controller
             ->count();
 
         $results = ThreadBundle::whereRelation('user', 'user_id', Auth::user()->id)
+            ->orderBy('created_at', 'DESC')
             ->take($limit)
             ->skip($offset)
             ->get();
@@ -86,7 +87,7 @@ class ApiController extends Controller
             return response()->json(['message' => 'Ya existe este thread'], 403);
         }
 
-        $thread =  new ThreadBundle();
+        $thread = new ThreadBundle();
         $thread->thread_id = $request->thread_id;
         $thread->title = $request->title;
         $thread->last_message = $request->last_message;
