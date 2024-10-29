@@ -52,6 +52,18 @@ class ApiController extends Controller
     }
 
     /**
+     * Get OpenAI key
+     *
+     * @return \Illuminate\Http\Client\Response
+     */
+    public function getOpenAiKey(Request $request)
+    {
+        return Response([
+            'open_ia_key' => env('OPEN_IA_KEY')
+        ], 200);
+    }
+
+    /**
      * Get Threads by user
      *
      * @return \Illuminate\Http\Client\Response

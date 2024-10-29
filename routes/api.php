@@ -8,6 +8,7 @@ Route::group(['prefix' => 'v1'], function (){
 
     Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::post('/logout', [ApiController::class, 'logout']);
+        Route::get('/openaikey', [ApiController::class, 'getOpenAiKey']);
 
         Route::group(['prefix' => 'threads'],
         function() {
